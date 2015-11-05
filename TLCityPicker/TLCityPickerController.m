@@ -11,7 +11,7 @@
 #import "TLCityHeaderView.h"
 #import "TLCityGroupCell.h"
 
-@interface TLCityPickerController () <TLCitySelectedDelegate>
+@interface TLCityPickerController () <TLCityGroupCellDelegate, TLSearchResultControllerDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) TLCityPickerSearchResultController *searchResultVC;
@@ -142,9 +142,20 @@
     return index - 1;
 }
 
-#pragma mark - TLCitySelectedDelegate
-- (void) didSelectCity:(TLCity *)city
+#pragma mark - TLCityGroupCellDelegate
+- (void) cityGroupCellDidSelectCity:(TLCity *)city
 {
+    if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
+        [_delegate cityPickerController:self didSelectCity:city];
+    }
+}
+
+#pragma mark - TLSearchResultControllerDelegate
+- (void) searchResultControllerDidSelectCity:(TLCity *)city
+{
+    [self.searchController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
     if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
         [_delegate cityPickerController:self didSelectCity:city];
     }
@@ -178,7 +189,7 @@
     if (_searchResultVC == nil) {
         _searchResultVC = [[TLCityPickerSearchResultController alloc] init];
         _searchResultVC.cityData = self.cityData;
-        _searchResultVC.citySelectedDelegate = self;
+        _searchResultVC.searchResultDelegate = self;
     }
     return _searchResultVC;
 }

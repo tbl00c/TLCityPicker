@@ -20,8 +20,14 @@
 
 @end
 
-@protocol TLCitySelectedDelegate <NSObject>
+@protocol TLCityGroupCellDelegate <NSObject>
 
-- (void) didSelectCity:(TLCity *)city;
+- (void) cityGroupCellDidSelectCity:(TLCity *)city;
+
+@end
+
+@protocol TLSearchResultControllerDelegate <NSObject>
+
+- (void) searchResultControllerDidSelectCity:(TLCity *)city;
 
 @end

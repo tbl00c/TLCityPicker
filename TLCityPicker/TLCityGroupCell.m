@@ -108,8 +108,8 @@
 - (void) cityButtonDown:(UIButton *)sender
 {
     TLCity *city = [self.cityArray objectAtIndex:sender.tag];
-    if (_delegate && [_delegate respondsToSelector:@selector(didSelectCity:)]) {
-        [_delegate didSelectCity:city];
+    if (_delegate && [_delegate respondsToSelector:@selector(cityGroupCellDidSelectCity:)]) {
+        [_delegate cityGroupCellDidSelectCity:city];
     }
 }
 

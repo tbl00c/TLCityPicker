@@ -11,7 +11,7 @@
 
 @interface TLCityPickerSearchResultController : UITableViewController <UISearchResultsUpdating>
 
-@property (nonatomic, assign) id<TLCitySelectedDelegate>citySelectedDelegate;
+@property (nonatomic, assign) id<TLSearchResultControllerDelegate>searchResultDelegate;
 
 @property (nonatomic, strong) NSArray *cityData;
 

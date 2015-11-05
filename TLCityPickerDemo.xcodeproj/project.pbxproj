@@ -8,21 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		C21FDDFB1BEB8C07009D6C11 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C21FDDFA1BEB8C07009D6C11 /* Launch Screen.xib */; };
+		C21FDE091BEBB2CF009D6C11 /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C21FDDFD1BEBB2CF009D6C11 /* CityData.plist */; };
+		C21FDE0A1BEBB2CF009D6C11 /* TLCity.m in Sources */ = {isa = PBXBuildFile; fileRef = C21FDDFF1BEBB2CF009D6C11 /* TLCity.m */; };
+		C21FDE0B1BEBB2CF009D6C11 /* TLCityGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21FDE011BEBB2CF009D6C11 /* TLCityGroupCell.m */; };
+		C21FDE0C1BEBB2CF009D6C11 /* TLCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C21FDE031BEBB2CF009D6C11 /* TLCityHeaderView.m */; };
+		C21FDE0D1BEBB2CF009D6C11 /* TLCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21FDE051BEBB2CF009D6C11 /* TLCityPickerController.m */; };
+		C21FDE0E1BEBB2CF009D6C11 /* TLCityPickerSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21FDE081BEBB2CF009D6C11 /* TLCityPickerSearchResultController.m */; };
 		C24BC1931BEB2F2C0067ED8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1921BEB2F2C0067ED8C /* main.m */; };
 		C24BC1961BEB2F2C0067ED8C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1951BEB2F2C0067ED8C /* AppDelegate.m */; };
 		C24BC1991BEB2F2C0067ED8C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1981BEB2F2C0067ED8C /* ViewController.m */; };
 		C24BC19E1BEB2F2C0067ED8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C24BC19D1BEB2F2C0067ED8C /* Assets.xcassets */; };
-		C24BC1AB1BEB2F570067ED8C /* TLCityPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1AA1BEB2F570067ED8C /* TLCityPickerController.m */; };
-		C24BC1AF1BEB2FF20067ED8C /* TLCity.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1AE1BEB2FF20067ED8C /* TLCity.m */; };
 		C24BC1B11BEB34290067ED8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C24BC1B01BEB34290067ED8C /* Main.storyboard */; };
-		C24BC1BF1BEB51800067ED8C /* CityData.plist in Resources */ = {isa = PBXBuildFile; fileRef = C24BC1BE1BEB51800067ED8C /* CityData.plist */; };
-		C24BC1C21BEB558D0067ED8C /* TLCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1C11BEB558D0067ED8C /* TLCityHeaderView.m */; };
-		C24BC1C81BEB5CAF0067ED8C /* TLCityPickerSearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1C71BEB5CAF0067ED8C /* TLCityPickerSearchResultController.m */; };
-		C24BC1CB1BEB70B50067ED8C /* TLCityGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C24BC1CA1BEB70B50067ED8C /* TLCityGroupCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C21FDDFA1BEB8C07009D6C11 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		C21FDDFD1BEBB2CF009D6C11 /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
+		C21FDDFE1BEBB2CF009D6C11 /* TLCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCity.h; sourceTree = "<group>"; };
+		C21FDDFF1BEBB2CF009D6C11 /* TLCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCity.m; sourceTree = "<group>"; };
+		C21FDE001BEBB2CF009D6C11 /* TLCityGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityGroupCell.h; sourceTree = "<group>"; };
+		C21FDE011BEBB2CF009D6C11 /* TLCityGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityGroupCell.m; sourceTree = "<group>"; };
+		C21FDE021BEBB2CF009D6C11 /* TLCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityHeaderView.h; sourceTree = "<group>"; };
+		C21FDE031BEBB2CF009D6C11 /* TLCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityHeaderView.m; sourceTree = "<group>"; };
+		C21FDE041BEBB2CF009D6C11 /* TLCityPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerController.h; sourceTree = "<group>"; };
+		C21FDE051BEBB2CF009D6C11 /* TLCityPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityPickerController.m; sourceTree = "<group>"; };
+		C21FDE061BEBB2CF009D6C11 /* TLCityPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerDelegate.h; sourceTree = "<group>"; };
+		C21FDE071BEBB2CF009D6C11 /* TLCityPickerSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerSearchResultController.h; sourceTree = "<group>"; };
+		C21FDE081BEBB2CF009D6C11 /* TLCityPickerSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityPickerSearchResultController.m; sourceTree = "<group>"; };
 		C24BC18E1BEB2F2C0067ED8C /* TLCityPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLCityPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C24BC1921BEB2F2C0067ED8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C24BC1941BEB2F2C0067ED8C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,19 +43,7 @@
 		C24BC1981BEB2F2C0067ED8C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C24BC19D1BEB2F2C0067ED8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C24BC1A21BEB2F2C0067ED8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C24BC1A91BEB2F570067ED8C /* TLCityPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerController.h; sourceTree = "<group>"; };
-		C24BC1AA1BEB2F570067ED8C /* TLCityPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityPickerController.m; sourceTree = "<group>"; };
-		C24BC1AC1BEB2F8B0067ED8C /* TLCityPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerDelegate.h; sourceTree = "<group>"; };
-		C24BC1AD1BEB2FF20067ED8C /* TLCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCity.h; sourceTree = "<group>"; };
-		C24BC1AE1BEB2FF20067ED8C /* TLCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCity.m; sourceTree = "<group>"; };
 		C24BC1B01BEB34290067ED8C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		C24BC1BE1BEB51800067ED8C /* CityData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CityData.plist; sourceTree = "<group>"; };
-		C24BC1C01BEB558D0067ED8C /* TLCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityHeaderView.h; sourceTree = "<group>"; };
-		C24BC1C11BEB558D0067ED8C /* TLCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityHeaderView.m; sourceTree = "<group>"; };
-		C24BC1C61BEB5CAF0067ED8C /* TLCityPickerSearchResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityPickerSearchResultController.h; sourceTree = "<group>"; };
-		C24BC1C71BEB5CAF0067ED8C /* TLCityPickerSearchResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityPickerSearchResultController.m; sourceTree = "<group>"; };
-		C24BC1C91BEB70B50067ED8C /* TLCityGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLCityGroupCell.h; sourceTree = "<group>"; };
-		C24BC1CA1BEB70B50067ED8C /* TLCityGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLCityGroupCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +57,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C21FDDFC1BEBB2CF009D6C11 /* TLCityPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C21FDDFD1BEBB2CF009D6C11 /* CityData.plist */,
+				C21FDDFE1BEBB2CF009D6C11 /* TLCity.h */,
+				C21FDDFF1BEBB2CF009D6C11 /* TLCity.m */,
+				C21FDE001BEBB2CF009D6C11 /* TLCityGroupCell.h */,
+				C21FDE011BEBB2CF009D6C11 /* TLCityGroupCell.m */,
+				C21FDE021BEBB2CF009D6C11 /* TLCityHeaderView.h */,
+				C21FDE031BEBB2CF009D6C11 /* TLCityHeaderView.m */,
+				C21FDE041BEBB2CF009D6C11 /* TLCityPickerController.h */,
+				C21FDE051BEBB2CF009D6C11 /* TLCityPickerController.m */,
+				C21FDE061BEBB2CF009D6C11 /* TLCityPickerDelegate.h */,
+				C21FDE071BEBB2CF009D6C11 /* TLCityPickerSearchResultController.h */,
+				C21FDE081BEBB2CF009D6C11 /* TLCityPickerSearchResultController.m */,
+			);
+			path = TLCityPicker;
+			sourceTree = SOURCE_ROOT;
+		};
 		C24BC1851BEB2F2C0067ED8C = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +95,7 @@
 		C24BC1901BEB2F2C0067ED8C /* TLCityPickerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C24BC1A81BEB2F430067ED8C /* TLCityPicker */,
+				C21FDDFC1BEBB2CF009D6C11 /* TLCityPicker */,
 				C24BC1941BEB2F2C0067ED8C /* AppDelegate.h */,
 				C24BC1951BEB2F2C0067ED8C /* AppDelegate.m */,
 				C24BC1971BEB2F2C0067ED8C /* ViewController.h */,
@@ -96,25 +115,6 @@
 				C21FDDFA1BEB8C07009D6C11 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C24BC1A81BEB2F430067ED8C /* TLCityPicker */ = {
-			isa = PBXGroup;
-			children = (
-				C24BC1BE1BEB51800067ED8C /* CityData.plist */,
-				C24BC1AD1BEB2FF20067ED8C /* TLCity.h */,
-				C24BC1AE1BEB2FF20067ED8C /* TLCity.m */,
-				C24BC1AC1BEB2F8B0067ED8C /* TLCityPickerDelegate.h */,
-				C24BC1A91BEB2F570067ED8C /* TLCityPickerController.h */,
-				C24BC1AA1BEB2F570067ED8C /* TLCityPickerController.m */,
-				C24BC1C61BEB5CAF0067ED8C /* TLCityPickerSearchResultController.h */,
-				C24BC1C71BEB5CAF0067ED8C /* TLCityPickerSearchResultController.m */,
-				C24BC1C01BEB558D0067ED8C /* TLCityHeaderView.h */,
-				C24BC1C11BEB558D0067ED8C /* TLCityHeaderView.m */,
-				C24BC1C91BEB70B50067ED8C /* TLCityGroupCell.h */,
-				C24BC1CA1BEB70B50067ED8C /* TLCityGroupCell.m */,
-			);
-			path = TLCityPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +177,7 @@
 				C24BC1B11BEB34290067ED8C /* Main.storyboard in Resources */,
 				C21FDDFB1BEB8C07009D6C11 /* Launch Screen.xib in Resources */,
 				C24BC19E1BEB2F2C0067ED8C /* Assets.xcassets in Resources */,
-				C24BC1BF1BEB51800067ED8C /* CityData.plist in Resources */,
+				C21FDE091BEBB2CF009D6C11 /* CityData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,14 +188,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24BC1AF1BEB2FF20067ED8C /* TLCity.m in Sources */,
+				C21FDE0B1BEBB2CF009D6C11 /* TLCityGroupCell.m in Sources */,
+				C21FDE0A1BEBB2CF009D6C11 /* TLCity.m in Sources */,
+				C21FDE0D1BEBB2CF009D6C11 /* TLCityPickerController.m in Sources */,
+				C21FDE0C1BEBB2CF009D6C11 /* TLCityHeaderView.m in Sources */,
 				C24BC1991BEB2F2C0067ED8C /* ViewController.m in Sources */,
-				C24BC1CB1BEB70B50067ED8C /* TLCityGroupCell.m in Sources */,
-				C24BC1C21BEB558D0067ED8C /* TLCityHeaderView.m in Sources */,
-				C24BC1AB1BEB2F570067ED8C /* TLCityPickerController.m in Sources */,
 				C24BC1961BEB2F2C0067ED8C /* AppDelegate.m in Sources */,
-				C24BC1C81BEB5CAF0067ED8C /* TLCityPickerSearchResultController.m in Sources */,
 				C24BC1931BEB2F2C0067ED8C /* main.m in Sources */,
+				C21FDE0E1BEBB2CF009D6C11 /* TLCityPickerSearchResultController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

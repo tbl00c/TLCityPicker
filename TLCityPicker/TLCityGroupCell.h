@@ -12,7 +12,7 @@
 
 @interface TLCityGroupCell : UITableViewCell
 
-@property (nonatomic, assign) id<TLCitySelectedDelegate>delegate;
+@property (nonatomic, assign) id<TLCityGroupCellDelegate>delegate;
 
 @property (nonatomic, strong) NSString *title;
 

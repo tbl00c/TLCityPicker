@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "TLCityPicker/TLCityPickerController.h"
+#import "TLCityPickerController.h"
 
 @interface ViewController () <TLCityPickerDelegate>
 

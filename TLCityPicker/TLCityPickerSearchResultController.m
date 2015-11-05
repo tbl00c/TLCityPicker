@@ -56,14 +56,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TLCity *city = [self.cityData objectAtIndex:indexPath.row];
-    if (_citySelectedDelegate && [_citySelectedDelegate respondsToSelector:@selector(didSelectCity:)]) {
-        [_citySelectedDelegate didSelectCity:city];
+    TLCity *city = [self.data objectAtIndex:indexPath.row];
+    if (_searchResultDelegate && [_searchResultDelegate respondsToSelector:@selector(searchResultControllerDidSelectCity:)]) {
+        [_searchResultDelegate searchResultControllerDidSelectCity:city];
     }
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
 }
 
 
