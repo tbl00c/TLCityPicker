@@ -25,10 +25,10 @@
 - (IBAction)cityPickerButtonDown:(UIButton *)sender {
     TLCityPickerController *cityPickerVC = [[TLCityPickerController alloc] init];
     [cityPickerVC setDelegate:self];
-//    
-//    cityPickerVC.locationCityID = @"1400010000";
-//    cityPickerVC.commonCitys = @[@"1400010000", @"100010000"];
-//    cityPickerVC.hotCitys = @[@"100010000", @"200010000", @"300210000", @"600010000", @"300110000",];
+    
+    cityPickerVC.locationCityID = @"1400010000";
+//    cityPickerVC.commonCitys = [[NSMutableArray alloc] initWithArray: @[@"1400010000", @"100010000"]];        // 最近访问城市，如果不设置，将自动管理
+    cityPickerVC.hotCitys = @[@"100010000", @"200010000", @"300210000", @"600010000", @"300110000"];
     
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:cityPickerVC] animated:YES completion:^{
         
