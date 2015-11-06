@@ -21,4 +21,4 @@ cityPickerVC.hotCitys = @[@"100010000", @"200010000", @"300210000", @"600010000"
 ```
 
 ## DEMO
-![image]https://github.com/tbl00c/TLCityPicker/Demo.gif)
+![image](https://github.com/tbl00c/TLCityPicker/Demo.gif)
