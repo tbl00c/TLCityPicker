@@ -8,14 +8,19 @@
 
 #import "TLCityGroupCell.h"
 
-#define     MIN_SPACE           10
-#define     WIDTH_SPACE         13.5
-#define     WIDTH_BUTTON        85
+#define     MIN_SPACE           8           // 城市button最小间隙
+#define     MAX_SPACE           10
+
+#define     WIDTH_LEFT          13.5        // button左边距
+#define     WIDTH_RIGHT         28          // button右边距
+
+#define     MIN_WIDTH_BUTTON    75
 #define     HEIGHT_BUTTON       38
 
 @interface TLCityGroupCell ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *noDataLabel;
 
 @property (nonatomic, strong) NSMutableArray *arrayCityButtons;
 
@@ -29,6 +34,7 @@
         [self setBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1.0]];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         [self addSubview:self.titleLabel];
+        [self addSubview:self.noDataLabel];
     }
     return self;
 }
@@ -36,35 +42,57 @@
 - (void) layoutSubviews
 {
     [super layoutSubviews];
-    float x = WIDTH_SPACE;
+    float x = WIDTH_LEFT;
     float y = 5;
     CGSize size = [self.titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)];
-    [self.titleLabel setFrame:CGRectMake(x, y, self.frame.size.width - 10, size.height)];
-    y += size.height + 10;
+    [self.titleLabel setFrame:CGRectMake(x, y, self.frame.size.width - x, size.height)];
+    y += size.height + 3;
+    [self.noDataLabel setFrame:CGRectMake(x + 5, y, self.frame.size.width - x - 5, self.titleLabel.frame.size.height)];
     
-    float space = MIN_SPACE;       // 最小空隙
-    int t = (self.frame.size.width - WIDTH_SPACE - 20) / (WIDTH_BUTTON + space);
-    space = (self.frame.size.width - 20 - WIDTH_BUTTON * t) / (t + 1);      // 修正空隙大小
+    y += 7;
+    float space = MIN_SPACE;            // 最小空隙
+    float width = MIN_WIDTH_BUTTON;     // button最小宽度
+    int t = (self.frame.size.width - WIDTH_LEFT - WIDTH_RIGHT + space) / (width + space);
+    
+    space = (self.frame.size.width - WIDTH_LEFT - WIDTH_RIGHT - width * t) / (t - 1);        // 修正空隙宽度
+    if (space > MAX_SPACE) {                                                                // 修正button宽度
+        width += (space - MAX_SPACE) * (t - 1) / t;
+        space = MAX_SPACE;
+    }
+    
     for (int i = 0; i < self.arrayCityButtons.count; i ++) {
         UIButton *button = [self.arrayCityButtons objectAtIndex:i];
-        [button setFrame:CGRectMake(x, y, WIDTH_BUTTON, HEIGHT_BUTTON)];
+        [button setFrame:CGRectMake(x, y, width, HEIGHT_BUTTON)];
         if ((i + 1) % t == 0) {
             y += HEIGHT_BUTTON + 5;
-            x = WIDTH_SPACE;
+            x = WIDTH_LEFT;
         }
         else {
-            x += WIDTH_BUTTON + space;
+            x += width + space;
         }
     }
 }
 
 + (CGFloat) getCellHeightOfCityArray:(NSArray *)cityArray
 {
-    float space = MIN_SPACE;       // 最小空隙
-    int t = ([UIScreen mainScreen].bounds.size.width - 20 - WIDTH_SPACE) / (WIDTH_BUTTON + space);
-    space = ([UIScreen mainScreen].bounds.size.width - 20 - WIDTH_BUTTON * t) / (t + 1);
-    float y = 40 + (HEIGHT_BUTTON + 5) * (cityArray.count / t + (cityArray.count % t == 0 ? 0 : 1));
-    return y;
+    float h = 30;
+    if (cityArray != nil && cityArray.count > 0) {
+        float space = MIN_SPACE;            // 最小空隙
+        float width = MIN_WIDTH_BUTTON;     // button最小宽度
+        int t = ([UIScreen mainScreen].bounds.size.width - WIDTH_LEFT - WIDTH_RIGHT + space) / (width + space);
+        
+        space = ([UIScreen mainScreen].bounds.size.width - WIDTH_LEFT - WIDTH_RIGHT - width * t) / (t - 1);        // 修正空隙宽度
+        if (space > MAX_SPACE) {                                                                // 修正button宽度
+            width += (space - MAX_SPACE) * (t - 1) / t;
+            space = MAX_SPACE;
+        }
+
+        h += (10 + (HEIGHT_BUTTON + 5) * (cityArray.count / t + (cityArray.count % t == 0 ? 0 : 1)));
+    }
+    else {
+        h += 17;
+    }
+    return h;
 }
 
 #pragma mark - Setter
@@ -77,6 +105,8 @@
 - (void) setCityArray:(NSArray *)cityArray
 {
     _cityArray = cityArray;
+    [self.noDataLabel setHidden:(cityArray != nil && cityArray.count > 0)];
+ 
     for (int i = 0; i < cityArray.count; i ++) {
         TLCity *city = [cityArray objectAtIndex:i];
         UIButton *button = nil;
@@ -121,6 +151,17 @@
         [_titleLabel setFont:[UIFont systemFontOfSize:14.0]];
     }
     return _titleLabel;
+}
+
+- (UILabel *) noDataLabel
+{
+    if (_noDataLabel == nil) {
+        _noDataLabel = [[UILabel alloc] init];
+        [_noDataLabel setText:@"暂无数据"];
+        [_noDataLabel setTextColor:[UIColor grayColor]];
+        [_noDataLabel setFont:[UIFont systemFontOfSize:14.0f]];
+    }
+    return _noDataLabel;
 }
 
 - (NSMutableArray *) arrayCityButtons

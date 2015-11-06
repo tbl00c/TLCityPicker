@@ -14,7 +14,7 @@
 /*
  *  城市ID
  */
-@property (nonatomic, assign) NSString *cityID;
+@property (nonatomic, strong) NSString *cityID;
 
 /*
  *  城市名称

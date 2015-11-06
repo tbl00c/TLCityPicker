@@ -26,6 +26,7 @@
 
 @implementation TLCityPickerController
 @synthesize data = _data;
+@synthesize commonCitys = _commonCitys;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,7 +43,7 @@
 }
 
 
-#pragma mark - UITableViewDataSource
+#pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.data.count + 3;
 }
@@ -58,8 +59,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section < 3) {
         TLCityGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TLCityGroupCell"];
-        if (indexPath.section == 0 && self.locationCityID != nil) {
-            [cell setTitle:@"已定位城市"];
+        if (indexPath.section == 0) {
+            [cell setTitle:@"定位城市"];
             [cell setCityArray:self.localCityData];
         }
         else if (indexPath.section == 1) {
@@ -81,7 +82,7 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+#pragma mark UITableViewDelegate
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section < 3) {
@@ -95,7 +96,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && self.locationCityID != nil) {
+    if (indexPath.section == 0) {
         return [TLCityGroupCell getCellHeightOfCityArray:self.localCityData];
     }
     else if (indexPath.section == 1) {
@@ -123,9 +124,7 @@
     }
     TLCityGroup *group = [self.data objectAtIndex:indexPath.section - 3];
     TLCity *city = [group.arrayCitys objectAtIndex:indexPath.row];
-    if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
-        [_delegate cityPickerController:self didSelectCity:city];
-    }
+    [self didSelctedCity:city];
 }
 
 - (NSArray *) sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -142,23 +141,19 @@
     return index - 1;
 }
 
-#pragma mark - TLCityGroupCellDelegate
+#pragma mark TLCityGroupCellDelegate
 - (void) cityGroupCellDidSelectCity:(TLCity *)city
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
-        [_delegate cityPickerController:self didSelectCity:city];
-    }
+    [self didSelctedCity:city];
 }
 
-#pragma mark - TLSearchResultControllerDelegate
+#pragma mark TLSearchResultControllerDelegate
 - (void) searchResultControllerDidSelectCity:(TLCity *)city
 {
     [self.searchController dismissViewControllerAnimated:YES completion:^{
         
     }];
-    if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
-        [_delegate cityPickerController:self didSelectCity:city];
-    }
+    [self didSelctedCity:city];
 }
 
 #pragma mark - Event Response
@@ -166,6 +161,37 @@
 {
     if (_delegate && [_delegate respondsToSelector:@selector(cityPickerControllerDidCancel:)]) {
         [_delegate cityPickerControllerDidCancel:self];
+    }
+}
+
+#pragma mark - Private Methods
+- (void) didSelctedCity:(TLCity *)city
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(cityPickerController:didSelectCity:)]) {
+        [_delegate cityPickerController:self didSelectCity:city];
+    }
+    
+    if (self.commonCitys.count >= MAX_COMMON_CITY_NUMBER) {
+        [self.commonCitys removeLastObject];
+    }
+    for (NSString *str in self.commonCitys) {
+        if ([city.cityID isEqualToString:str]) {
+            [self.commonCitys removeObject:str];
+            break;
+        }
+    }
+    [self.commonCitys insertObject:city.cityID atIndex:0];
+    [[NSUserDefaults standardUserDefaults] setValue:self.commonCitys forKey:COMMON_CITY_DATA_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Setter
+- (void) setCommonCitys:(NSMutableArray *)commonCitys
+{
+    _commonCitys = commonCitys;
+    if (commonCitys != nil && commonCitys.count > 0) {
+        [[NSUserDefaults standardUserDefaults] setValue:commonCitys forKey:COMMON_CITY_DATA_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
@@ -219,33 +245,35 @@
     return _data;
 }
 
-- (NSMutableArray *) localCityData
-{
-    if (_localCityData == nil) {
-        _localCityData = [[NSMutableArray alloc] init];
-        TLCity *city = nil;
-        for (TLCity *item in self.cityData) {
-            if ([item.cityID isEqualToString:self.locationCityID]) {
-                city = item;
-                break;
-            }
-        }
-        if (city == nil) {
-            NSLog(@"Not Found City: %@", self.locationCityID);
-        }
-        else {
-            [_localCityData addObject:city];
-        }
-    }
-    return _localCityData;
-}
-
 - (NSMutableArray *) cityData
 {
     if (_cityData == nil) {
         _cityData = [[NSMutableArray alloc] init];
     }
     return _cityData;
+}
+
+- (NSMutableArray *) localCityData
+{
+    if (_localCityData == nil) {
+        _localCityData = [[NSMutableArray alloc] init];
+        if (self.locationCityID != nil) {
+            TLCity *city = nil;
+            for (TLCity *item in self.cityData) {
+                if ([item.cityID isEqualToString:self.locationCityID]) {
+                    city = item;
+                    break;
+                }
+            }
+            if (city == nil) {
+                NSLog(@"Not Found City: %@", self.locationCityID);
+            }
+            else {
+                [_localCityData addObject:city];
+            }
+        }
+    }
+    return _localCityData;
 }
 
 - (NSMutableArray *) hotCityData
@@ -300,6 +328,15 @@
         _arraySection = [[NSMutableArray alloc] initWithObjects:UITableViewIndexSearch, @"定位", @"最近", @"最热", nil];
     }
     return _arraySection;
+}
+
+- (NSMutableArray *) commonCitys
+{
+    if (_commonCitys == nil) {
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:COMMON_CITY_DATA_KEY];
+        _commonCitys = (array == nil ? [[NSMutableArray alloc] init] : [[NSMutableArray alloc] initWithArray:array copyItems:YES]);
+    }
+    return _commonCitys;
 }
 
 @end

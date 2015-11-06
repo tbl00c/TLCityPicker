@@ -10,6 +10,9 @@
 #import "TLCityPickerDelegate.h"
 #import "TLCity.h"
 
+#define     MAX_COMMON_CITY_NUMBER      8
+#define     COMMON_CITY_DATA_KEY        @"TLCityPickerCommonCityArray"
+
 @interface TLCityPickerController : UITableViewController
 
 @property (nonatomic, assign) id<TLCityPickerDelegate>delegate;
@@ -20,9 +23,9 @@
 @property (nonatomic, strong) NSString *locationCityID;
 
 /*
- *  常用城市id数组
+ *  常用城市id数组,自动管理，也可赋值
  */
-@property (nonatomic, strong) NSArray *commonCitys;
+@property (nonatomic, strong) NSMutableArray *commonCitys;
 
 /*
  *  热门城市id数组
