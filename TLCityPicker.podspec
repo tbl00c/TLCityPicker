@@ -10,6 +10,6 @@ s.author       = { "libokun" => "libokun@126.com" }
 s.platform     = :ios, "7.0"
 s.ios.deployment_target = "7.0"
 s.source       = { :git => "https://github.com/tbl00c/TLCityPicker.git", :tag => s.version}
-s.source_files  = 'TLCityPicker/TLCityPicker/*'
+s.source_files  = 'TLCityPicker/*.{h,m,plist}'
 s.requires_arc = true
 end
